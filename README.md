@@ -2,100 +2,99 @@
 
 ![automatic build of apk](https://github.com/kiwibrowser/src/workflows/automatic%20build%20of%20apk/badge.svg)
 
-## Overview
+## ภาพรวม
 
-[Kiwi Browser](https://kiwibrowser.com/) is a fully open-source web browser for Android.
+[Kiwi Browser](https://kiwibrowser.com/) คือเว็บเบราว์เซอร์สำหรับ Android ที่เป็นโอเพนซอร์สเต็มรูปแบบ
 
-Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits.
+Kiwi สร้างขึ้นบนพื้นฐานของ Chromium คุณสามารถสลับไปใช้ Kiwi ได้อย่างง่ายดายโดยไม่ต้องเรียนรู้อินเทอร์เฟซใหม่หรือทำลายพฤติกรรมการท่องเว็บที่คุ้นเคย
 
-Among other functionalities, Kiwi Browser supports:
+ฟีเจอร์บางอย่างที่ Kiwi Browser รองรับ ได้แก่:
 
- - Night Mode (another implementation than Chromium)
- - Support for Chrome Extensions
- - Bottom address bar
-It also includes performance improvements (partial rasterization of tiles, etc)
+ - โหมดกลางคืน (การทำงานต่างจาก Chromium)
+ - รองรับส่วนขยายของ Chrome
+ - แถบที่อยู่ด้านล่าง
+นอกจากนี้ยังมีการปรับปรุงประสิทธิภาพ (เช่น การ rasterize แบบบางส่วนของ tiles เป็นต้น)
 
-The browser is licensed under the same license as Chromium, which means that you are allowed to create derivatives of the browser.
+เบราว์เซอร์นี้ได้รับอนุญาตภายใต้ไลเซนส์เดียวกับ Chromium ซึ่งหมายความว่าคุณสามารถสร้างอนุพันธ์ของเบราว์เซอร์ได้
 
-Make sure to properly attribute the code to this repository (don't just replace with your name)
+โปรดให้เครดิตโค้ดให้เหมาะสมกับที่มาจาก repository นี้ (อย่าเปลี่ยนเป็นชื่อของคุณเพียงอย่างเดียว)
 
-## Table of contents
+## สารบัญ
 
-- [Timeline](#timeline)
-- [Contributing](#contributing)
-- [Modifying](#modifying)
-- [Building](#building)
-  - [Getting the source-code and environment](#getting-the-source-code-and-environment)
-  - [Setting-up dependencies](#setting-up-dependencies)
-  - [Preparing a signing key](#preparing-a-signing-key)
-  - [Configuring the build type and platform](#configuring-the-build-type-and-platform)
-  - [Preparing the first build](#preparing-the-first-build)
-  - [Compiling Kiwi Browser](#compiling-kiwi-browser)
-  - [Investigating crashes](#investigating-crashes)
-  - [Remote debugging](#remote-debugging)
-  - [Optimizing binary size](#optimizing-binary-size)
-- [Roadmap](#roadmap)
-- [Additional help](#additional-help)
+- [ไทม์ไลน์](#timeline)
+- [การมีส่วนร่วม (Contributing)](#contributing)
+- [การแก้ไข (Modifying)](#modifying)
+- [การสร้าง (Building)](#building)
+  - [การรับซอร์สดโค้ดและสภาพแวดล้อม](#getting-the-source-code-and-environment)
+  - [การติดตั้ง Dependencies](#setting-up-dependencies)
+  - [การเตรียมคีย์สำหรับลงนาม](#preparing-a-signing-key)
+  - [การกำหนดประเภทการสร้างและแพลตฟอร์ม](#configuring-the-build-type-and-platform)
+  - [การเตรียมการสำหรับการสร้างครั้งแรก](#preparing-the-first-build)
+  - [การคอมไพล์ Kiwi Browser](#compiling-kiwi-browser)
+  - [การสืบสวนการล่มของแอป](#investigating-crashes)
+  - [การดีบักจากระยะไกล](#remote-debugging)
+  - [การปรับขนาดไบนารีให้เล็กลง](#optimizing-binary-size)
+- [โร้ดแมป (Roadmap)](#roadmap)
+- [ความช่วยเหลือเพิ่มเติม](#additional-help)
 
-## Timeline
+## ไทม์ไลน์
 
-- 15 April 2018 - First Kiwi Browser release.
+- 15 เมษายน 2018 - การปล่อย Kiwi Browser ครั้งแรก
 
-- 15 April 2019 - Kiwi Browser gets support for Chrome Extensions.
+- 15 เมษายน 2019 - Kiwi Browser ได้รับการรองรับสำหรับ Chrome Extensions
 
-- 17 April 2020 - Kiwi Browser goes fully open-source.
+- 17 เมษายน 2020 - Kiwi Browser เปิดเป็นโอเพนซอร์สเต็มรูปแบบ
 
+โค้ดนี้เป็นปัจจุบันและตรงกับการสร้างบน Play Store
 
-This code is up-to-date and is matching the build on the Play Store.
+การสร้างใหม่จะทำจากเวอร์ชันเปิดของโค้ดโดยตรงไปยัง [Play Store](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser)
 
-The new builds are done from the open-source edition directly to the [Play Store](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser).
+มีชั่วโมงการทำงานและไฟล์จำนวนมากที่ถูกเปลี่ยนแปลงใน repository นี้
 
-There are thousands of hours of work in this repository and thousands of files changed.
+## การมีส่วนร่วม
 
-## Contributing
+ยินดีต้อนรับและสนับสนุนการมีส่วนร่วมทุกชนิด
 
-Contributions are welcome and encouraged.
+ถ้าคุณต้องการให้โค้ดของคุณถูกรวมเข้าใน Kiwi ให้เปิด merge request มา ผม (หรือสมาชิกชุมชน) จะช่วยทบทวนโค้ดกับคุณและผลักขึ้น Play Store ให้
 
-If you want your code to be integrated into Kiwi, open a merge request, I (and/or a member of the community) can review the code with you and push it to the Play Store.
+## การแก้ไข
 
-## Modifying
+ถ้าคุณสร้างเบราว์เซอร์ของคุณเองหรือม็อด ให้แน่ใจว่าได้เปลี่ยนชื่อเบราว์เซอร์และไอคอนในไฟล์ `chrome/android/java/res_chromium/values/channel_constants.xml` และสตริงแปลภาษา (ค้นหาและแทนที่ตามความจำเป็น)
+เมื่อเปลี่ยนไอคอนของแอป ให้เพิ่มไฟล์ไอคอนใหม่ในโฟลเดอร์ `chrome/android/java/res/mipmap` (mdpi, hdpi เป็นต้น) และอัปเดต AndroidManifest.xml ด้วย
 
-If you create your own browser or a mod, make sure to change the browser name and icon in `chrome/android/java/res_chromium/values/channel_constants.xml` and translation strings (search and replace Kiwi in all `*.xtb`, all `*.grd` and all `*.grdp` files).
-When replacing the app icon, make sure to add the new icon files in their respective `chrome/android/java/res/mipmap` folders(mdpi, hdpi etc) and also update the AndroidManifest.xml.
+## การสร้าง
 
-## Building
+เครื่องอ้างอิงสำหรับการสร้างใช้ Ubuntu 19.04 (ทดสอบบน Ubuntu 18.04 และ 19.10 แล้วเช่นกัน)
 
-The reference build machine is using Ubuntu 19.04 (also tested using Ubuntu 18.04 and Ubuntu 19.10).
+ข้อกำหนดขั้นต่ำของระบบคือ 2 vCPU และ 7.5 GB หน่วยความจำ
 
-The minimum system requirements are 2 vCPUs, 7.5 GB Memory.
+คุณสามารถใช้ virtual machine, AWS VM หรือ Google Cloud VM
 
-You can use a virtual machine, an AWS VM, or a Google Cloud VM.
+### การรับซอร์สดโค้ดและสภาพแวดล้อม
 
-### Getting the source-code and environment
+ในการสร้าง Kiwi Browser คุณสามารถโคลน repository โดยตรง เพราะเราได้รวม dependencies มาแล้ว:
 
-To build Kiwi Browser you can directly clone the repository, as we have packed all dependencies already:
-
-In ~ (your home directory) run:
+ใน ~ (ไดเรกทอรีบ้านของคุณ) ให้รัน:
 
 ```
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 ```
 
-and edit the file ~/.bashrc to add at the very end
+และแก้ไขไฟล์ ~/.bashrc โดยเพิ่มตอนท้ายด้วย
 
 ```bash
 export PATH=$HOME/depot_tools:$PATH
 ```
 
-Validate the changes by running:
+ตรวจสอบการเปลี่ยนแปลงด้วยการรัน:
 
 ```bash
 source ~/.bashrc
 ```
 
-This will give you access to one utility called gclient (as in "Google client")
+นี่จะทำให้คุณเข้าถึงยูทิลิตี้หนึ่งตัวคือ gclient (ย่อมาจาก "Google client")
 
-Create a directory called ~/chromium/, and in ~/chromium/ run:
+สร้างไดเรกทอรีชื่อ ~/chromium/ และใน ~/chromium/ ให้รัน:
 
 ```bash
 git clone https://github.com/kiwibrowser/dependencies.git .cipd
@@ -104,24 +103,24 @@ cp ~/chromium/.cipd/.gclient_entries ~/chromium/
 git clone https://github.com/kiwibrowser/src.git
 ```
 
-At this stage, in ~/chromium/ you will have the .cipd folder, and a folder with the Kiwi Browser source-code called src.
+ในขั้นตอนนี้ ใน ~/chromium/ คุณจะมีโฟลเดอร์ .cipd และโฟลเดอร์ src ซึ่งเป็นซอร์สโค้ดของ Kiwi Browser
 
-### Setting up dependencies
+### การติดตั้ง Dependencies
 
-To be able to build Kiwi Browser, you need python and OpenJDK (OpenJDK to create Java bindings for Android):
+เพื่อให้สามารถสร้าง Kiwi Browser ได้ คุณต้องมี python และ OpenJDK (OpenJDK เพื่อสร้าง Java bindings สำหรับ Android):
 
 ```bash
 sudo apt-get update
 sudo apt-get install python openjdk-8-jdk-headless libncurses5
 ```
 
-We want to be sure to use Java 1.8 in order to not get compilation errors (lint and errorprone):
+เราต้องการใช้ Java 1.8 เพื่อหลีกเลี่ยงข้อผิดพลาดคอมไพล์ (เช่น lint และ errorprone):
 
 ```bash
 sudo update-java-alternatives --set java-1.8.0-openjdk-amd64
 ```
 
-then run the following commands in ~/chromium/src:
+จากนั้นรันคำสั่งต่อไปนี้ใน ~/chromium/src:
 
 ```bash
 bash install-build-deps.sh --no-chromeos-fonts
@@ -129,27 +128,27 @@ build/linux/sysroot_scripts/install-sysroot.py --arch=i386
 build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
 ```
 
-These commands will install all necessary system packages using apt-get and gather a minimal build filesystem.
+คำสั่งเหล่านี้จะติดตั้งแพ็กเกจระบบที่จำเป็นทั้งหมดผ่าน apt-get และรวบรวมระบบไฟล์สำหรับการสร้างขั้นต่ำ
 
-### Preparing a signing key
+### การเตรียมคีย์สำหรับลงนาม
 
-APKs (application packages) on Android need to be signed by developers in order to be distributed.
+ไฟล์ APK บน Android ต้องถูกลงนามโดยนักพัฒนาเพื่อที่จะเผยแพร่
 
-To generate a key:
+เพื่อสร้างคีย์:
 
 ```bash
-keytool -genkey -v -keystore ~/chromium/keystore.jks -alias production -keyalg RSA -keysize 2048 -validity 10000 -storepass HERE_YOUR_ANDROID_KEYSTORE_PASSWORD -keypass HERE_YOUR_ANDROID_KEYSTORE_PASSWORD
+keytool -genkey -v -keystore ~/chromium/keystore.jks -alias production -keyalg RSA -keysize 2048 -validity 10000 -storepass HERE_YOUR_ANDROID_KEYSTORE_PASSWORD -keypass HERE_YOUR_ANDROID_KEYSTORE[...]
 ```
 
-### Configuring the build type and platform
+### การกำหนดประเภทการสร้างและแพลตฟอร์ม
 
-Run:
+รัน:
 
 ```bash
 mkdir -p ~/chromium/src/out/android_arm
 ```
 
-Create a file called args.gn in ~/chromium/src/out/android_arm/ with this content:
+สร้างไฟล์ชื่อ args.gn ใน ~/chromium/src/out/android_arm/ โดยมีเนื้อหาแบบนี้:
 
 ```bash
 target_os = "android"
@@ -202,108 +201,111 @@ enable_extensions = true
 enable_plugins = true
 ```
 
-You can replace Android keystore password and Android keystore keypath with the data for your Android keystore (or you can generate a new key).
+คุณสามารถแทนรหัสผ่าน Android keystore และเส้นทาง keystore ด้วยข้อมูลของ keystore ของคุณเอง (หรือสร้างคีย์ใหม่ได้)
 
-### Preparing the first build
+### การเตรียมการสำหรับการสร้างครั้งแรก
 
-To prepare initial setup run from ~/chromium/src:
+เพื่อเตรียมการตั้งค่าเริ่มต้น ให้รันจาก ~/chromium/src:
 
 ```
 gclient runhooks
 ```
 
-then generate the build files in ~/chromium/src:
+จากนั้นสร้างไฟล์บิลด์ใน ~/chromium/src:
 
 ```
 gn gen out/android_arm
 ```
 
-Alternatively you can use: gn args out/android_arm
+ทางเลือกคือใช้: gn args out/android_arm
 
-### Compiling Kiwi Browser
+### การคอมไพล์ Kiwi Browser
 
-To compile, use the command:
+เพื่อคอมไพล์ ให้ใช้คำสั่ง:
 
 ```
 ninja -C out/android_arm chrome_public_apk
 ```
 
-you'll have the output APK in ~/chromium/src/out/android_arm/apks/ChromePublic.apk
+คุณจะได้ไฟล์ APK ผลลัพธ์ที่ ~/chromium/src/out/android_arm/apks/ChromePublic.apk
 
-then you can run the APK on your phone.
+จากนั้นคุณสามารถรัน APK บนอุปกรณ์ของคุณได้
 
-### Investigating crashes
+### การสืบสวนการล่มของแอป
 
-You need to have the symbols for the version that crashed, the symbols can be generated using:
+คุณต้องมีสัญลักษณ์ของเวอร์ชันที่ล่ม สัญลักษณ์สามารถสร้างได้โดยใช้:
+
 ```
 components/crash/content/tools/generate_breakpad_symbols.py --build-dir=out/lnx64 --symbols-dir=/tmp/my_symbols/ --binary=out/android_arm/lib.unstripped/libchrome.so --clear --verbose
 ```
 
-If you have the crash information from logcat:
+ถ้าคุณมีข้อมูลการล่มจาก logcat:
+
 ```
 out/lnx64/microdump_stackwalk -s /tmp/dump.dmp /tmp/my_symbols/
 ```
 
-If you have the crash information in a tombstone:
+ถ้าคุณมีข้อมูลการล่มในไฟล์ tombstone:
+
 ```
 ./third_party/android_ndk/ndk-stack -sym out/android_x86/lib.unstripped -dump tombstone
 ```
 
-### Remote debugging
+### ดีบักจากระยะไกล
 
-You can use Google Chrome to debug using the devtools console.
+คุณสามารถใช้ Google Chrome เพื่อดีบักโดยใช้ devtools console
 
-In case the devtools console doesn't work (error 404),  the solution is to use chrome://inspect (Inspect fallback)
-or change SHA1 in build/util/LASTCHANGE
+ในกรณีที่ devtools console ใช้งานไม่ได้ (เกิดข้อผิดพลาด 404) วิธีแก้คือใช้ chrome://inspect (Inspect fallback)
+หรือเปลี่ยนค่า SHA1 ใน build/util/LASTCHANGE
 
 ```
 LASTCHANGE=8920e690dd011895672947112477d10d5c8afb09-refs/branch-heads/3497@{#948}
 ```
 
-and confirm the change using:
+และยืนยันการเปลี่ยนแปลงด้วย:
 
 ```
-rm out/android_arm/gen/components/version_info/version_info_values.h out/android_x86/gen/components/version_info/version_info_values.h out/android_arm/gen/build/util/webkit_version.h out/android_x86/gen/build/util/webkit_version.h out/android_arm/gen/chrome/common/chrome_version.h out/android_x86/gen/chrome/common/chrome_version.h
+rm out/android_arm/gen/components/version_info/version_info_values.h out/android_x86/gen/components/version_info/version_info_values.h out/android_arm/gen/build/util/webkit_version.h out/android_[...]
 ```
 
-### Optimizing binary size
+### การปรับขนาดไบนารีให้เล็กลง
 
-If you want to optimize of the final APK, you can look at the size of each individual component using command:
+ถ้าต้องการปรับขนาด APK สุดท้าย คุณสามารถดูขนาดของแต่ละคอมโพเนนต์ด้วยคำสั่ง:
 
 ```
 ./tools/binary_size/supersize archive chrome.size --apk-file out/android_arm/apks/ChromePublic.apk -v
 ./tools/binary_size/supersize html_report chrome.size --report-dir size-report -v
 ```
 
-## Precompiled binaries
+## ไบนารีที่คอมไพล์ไว้ล่วงหน้า
 
-<a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser"> <img src="https://camo.githubusercontent.com/59c5c810fc8363f8488c3a36fc78f89990d13e99/68747470733a2f2f706c61792e676f6f676c652e636f6d2f696e746c2f656e5f75732f6261646765732f696d616765732f67656e657269632f656e5f62616467655f7765625f67656e657269632e706e67" height="55">
+<a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser"> <img src="https://camo.githubusercontent.com/59c5c810fc8363f8488c3a36fc78f89990d13e99/68747470733a2f2f706c61792e67[...]"></a>
 
-## Business model
+## โมเดลธุรกิจ
 
-The browser is getting paid by search engines for every search done using Kiwi Browser.
+เบราว์เซอร์ได้รับรายได้จากเครื่องมือค้นหาสำหรับแต่ละครั้งของการค้นหาที่ทำผ่าน Kiwi Browser
 
-Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.
-This is for invoicing our search partners and provide alternative search results (e.g. bangs aka "shortcuts").
+ขึ้นอยู่กับการ���ลือกเครื่องมือค้นหา คำขออาจผ่านเซิร์ฟเวอร์ของ Kiwibrowser / Kiwisearchservices
+ซึ่งใช้สำหรับการออกใบแจ้งหนี้ให้พันธมิตรการค้นหาและให้ผลลัพธ์การค้นหาทางเลือก (เช่น bangs หรือ "shortcuts")
 
-In some countries, the browser displays sponsored tiles or news on the homepage.
+ในบางประเทศ เบราว์เซอร์จะแสดงไทล์หรือข่าวที่มีสปอนเซอร์บนหน้าหลัก
 
-User data (browsing, navigation, passwords, accounts) is not collected because we have no interest to know what you do in the browser. Our main goal is to convince you to use a search engine partner, and this search engine makes money / new partnerships and shares revenue with us.
+ข้อมูลผู้ใช้ (การท่องเว็บ การนำทาง รหัสผ่าน บัญชี) จะไม่ถูกเก็บรวบรวมเพราะเราไม่มีความสนใจที่จะ���ู้ว่าคุณทำอะไรในเบราว์เซอร์ เป้าหมายหลักของเราคือชักจูงให้คุณใช้เครื่องมือค้นหาที่เป็นพันธมิตรของเราเท่านั้น
 
-## Roadmap
+## โร้ดแมป
 
-* During year 2020, the goal of the project is to make maintenance fixes and security updates.
+* ในปี 2020 เป้าหมายของโปรเจกต์คือการทำการแก้ไขการบำรุงรักษาและปรับปรุงด้านความปลอดภัย
 
-If there is an issue or bug that you want to be included to Kiwi, please open an issue ticket pointing to the related Chromium bug or commit. Be precise, there are dozen of thousands of changes in Chromium.
+ถ้ามีปัญหาหรือบั๊กที่คุณต้องการให้รวมเข้าใน Kiwi โปรดเปิด issue โดยอ้างถึงบั๊กหรือ commit ที่เกี่ยวข้องของ Chromium ให้ชัดเจน เพราะมีการเปลี่ยนแปลงจำนวนมากใน repository นี้
 
-* During 2021, Kiwi Browser will switch to a new branch called Kiwi Browser Next with a quite automated Chromium rebasing system.
+* ในปี 2021 Kiwi Browser จะย้ายไปยังสาขาใหม่ที่เรียกว่า Kiwi Browser Next โดยมีระบบรีเบส Chromium ที่ค่อนข้างอัตโนมัติ
 
-## Additional help
+## ความช่วยเหลือเพิ่มเติม
 
-You can ask for extra help in our Discord server:
+คุณสามารถขอความช่วยเหลือเพิ่มเติมได้ที่ Discord ของเรา:
 
 <a href="https://discord.gg/XyMppQq"> <img src="https://discordapp.com/assets/e4923594e694a21542a489471ecffa50.svg" height="50"></a>
 
-Have fun with Kiwi!
+ขอให้สนุกกับการใช้ Kiwi!
 
 Arnaud.
